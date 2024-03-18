@@ -1,24 +1,33 @@
 students_list = []
 students_dict = {}
 
-name = input("Enter students Name: ")
+name = input("Enter student name: ")
 age = input("Enter student age: ")
-grade = input("Enter student's grade: ")
-students_list.append(name)
-students_dict[name] = {"age": age, "grade": grade}
-print("Information added successfully!")
+grade = input("Enter student grade: ")
 
-search_students = input("Enter the student's name to search")
-if search_students in students_dict:
-    print(f"Student found: {name}, Age: {students_dict[name]['age']}, Grade: {students_dict[name]['grade']}")
+students_list.append(name)
+students_dict[name] = {"Age": age, "Grade": grade}
+
+print("Student information added successfully.")
+
+
+print("Student Details:")
+for name, info in students_dict.items():
+    print(f"Name: {name}, Age: {info['Age']}, Grade: {info['Grade']}")
+
+
+name_to_search = input("Enter student name to search: ")
+if name_to_search in students_dict:
+    info = students_dict[name_to_search]
+    print(f"Student Found - Name: {name_to_search}, Age: {info['Age']}, Grade: {info['Grade']}")
 else:
-    print("Information not found")
-    
-remove_students = input("Enter the student's name to remove")
-if remove_students in students_dict:
-    students_list.remove(name)
-    del students_dict[name]
-    print("Student removed successfully!")
-    
+    print(f"Student not found!")
+
+name_to_remove = input("Enter student name to remove: ")
+if name_to_remove in students_dict:
+    students_list.remove(name_to_remove)
+    del students_dict[name_to_remove]
+    print(f"Student '{name_to_remove}' removed successfully.")
+    print("Updated Student details: ", students_dict)
 else:
-    print("Student not found")
+    print(f"Student not found!")
